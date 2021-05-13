@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Movies</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Fredrick Boshe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">NYC Schools</a>
+</li>
+<li>
+  <a href="Music.html">Music Store</a>
+</li>
+<li>
+  <a href="Fisheries.html">USA Seafood</a>
+</li>
+<li>
+  <a href="Baseball.html">Baseball</a>
+</li>
+<li>
+  <a href="Fitness.html">Fitness</a>
+</li>
+<li>
+  <a href="Movies.html">Movies</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Movies</h1>
+
+</div>
+
+
+<br></br>
+<center>
+<div id="movies-movie-ratings-across-the-web" class="section level1">
+<h1>Movies: Movie Ratings across the Web 🎥?</h1>
+</center>
+<p>Most of us love watching good movies that align to our tastes and at times, well-rated ones. We can either allow streaming platforms to recommend us movies, see trailers and get interested in upcoming movies or like most of us, go through rating sites like <a href="https://www.imdb.com/?ref_=nv_home">IMDB</a> or <a href="https://www.fandango.com/">Fandango</a>.</p>
+<p>The problem is, not all rating sites rate movies the same and we do not know how sites score movies. We would like to rely on sites that are fair, transparent and consistent in how they rate movies. As an analyst, looking at rating data, exploring and visualizing it, helps provide valuable insights.</p>
+<p>This project looks into two key areas when it comes to analyzing movie rating data: 1. How do we gain access to movie rating data? <strong>Goal:</strong> Extract, clean and explore movie rating data. 2. How do we analyze a site’s transparency and consistency in rating movies? <strong>Goal:</strong> Explore movie ratings and visualize annual ratings.</p>
+<div id="movie-ratings-sourcing-data" class="section level2">
+<h2>Movie ratings: Sourcing Data</h2>
+<p>Most movie rating websites contain a multitude of data from images, to texts to numbers (e.g. scores, year of release etc). I shall use web scarping techniques to extract details of the <a href="https://www.imdb.com/list/ls086566770/">“Best British TV 2021”</a>. I love British tv shows so i will attempt to extract their <em>titles</em>, <em>year</em>, <em>run-time</em>, <em>genre</em>, <em>number of votes</em> and <em>rating</em>.</p>
+<p>This example contains some missing values, just like most data we come across in the world, so it will serve as a good example on how to first scrap the web, the clean the data and eventually manipulate it to deal with missing values.</p>
+<pre class="r"><code>#Load require packages. Important &quot;rvest&quot; for web scraping.
+library(tidyverse)
+library(rvest)
+library(httr)
+library(ggplot2)
+library(gridExtra)</code></pre>
+<p>When web scraping, it is always important to be able to identify the path/CSS selectors of the object e.g. image, you want to capture. Some people prefer to use the “Inspect Webpage” option when you right click on a webpage. Another cool tool, that i prefer to use, is the chrome extension, <a href="https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en">SelectorGadget</a>.</p>
+<pre class="r"><code>#Scrap the webpage and clean respective fields.
+wp_content_titles&lt;-read_html(&quot;C:/Users/ricky/Documents/GitHub/misc-projects/Best British TV 2021 - IMDb.html&quot;)%&gt;%
+  html_nodes(&quot;.sub-list h3 a&quot;)%&gt;% #This is the selector to show titles
+  html_text() #this specifies the output, &quot;text&quot;, i am seeking
+
+wp_content_year&lt;-read_html(&quot;C:/Users/ricky/Documents/GitHub/misc-projects/Best British TV 2021 - IMDb.html&quot;)%&gt;%
+  html_nodes(&quot;.sub-list h3 span:nth-child(3)&quot;)%&gt;%
+  html_text()
+wp_content_year&lt;-parse_number(wp_content_year) #This changes the date strings to numerical
+
+wp_content_run&lt;-read_html(&quot;C:/Users/ricky/Documents/GitHub/misc-projects/Best British TV 2021 - IMDb.html&quot;)%&gt;%
+  html_nodes(&quot;.sub-list .runtime&quot;)%&gt;%
+  html_text()
+wp_content_run&lt;-parse_number(wp_content_run) #This changes the runtime strings to numerical
+
+wp_content_genre&lt;-read_html(&quot;C:/Users/ricky/Documents/GitHub/misc-projects/Best British TV 2021 - IMDb.html&quot;)%&gt;%
+  html_nodes(&quot;.sub-list .genre&quot;)%&gt;%
+  html_text()
+wp_content_genre&lt;-str_trim(wp_content_genre) #String function to trim the whitespace off 
+
+wp_content_rating&lt;-read_html(&quot;C:/Users/ricky/Documents/GitHub/misc-projects/Best British TV 2021 - IMDb.html&quot;)%&gt;%
+  html_nodes(&quot;.sub-list .small:nth-child(1)&quot;)%&gt;%
+  html_text()
+wp_content_rating&lt;-parse_number(wp_content_rating)
+
+wp_content_vote&lt;-read_html(&quot;C:/Users/ricky/Documents/GitHub/misc-projects/Best British TV 2021 - IMDb.html&quot;)%&gt;%
+  html_nodes(&quot;.sub-list p:nth-child(6) span:nth-child(2)&quot;)%&gt;%
+  html_text()
+wp_content_vote&lt;-parse_number(wp_content_vote)</code></pre>
+<p><strong>Note:</strong> As the actual page gets update regularly, i have saved an offline version so as to be able to reproduce the results anytime.</p>
+<p>Some of the dataframes have missing values at different positions/indexes. I wrote a function that helps introduce “NA” values in indexes that are missing data. At the end, i want to have dataframes of the same row length.</p>
+<pre class="r"><code>#Some of the data would Introduce NAs to missing values
+append_vector &lt;- function(vector, inserted_indices, values){
+
+  ## Creating the current indices of the vector
+  vector_current_indices &lt;- 1:length(vector)
+
+  ## Adding small amount of values (between 0 and 0.9) to the `inserted_indices`
+  new_inserted_indices &lt;- inserted_indices + seq(0, 0.9, length.out = length(inserted_indices))
+
+  ## Appending the `new_inserted_indices` to the current vector indices
+  indices &lt;- c(vector_current_indices, new_inserted_indices)
+
+  ## Ordering the indices
+  ordered_indices &lt;- order(indices)
+
+  ## Appending the new value to the existing vector
+  new_vector &lt;- c(vector, values)
+
+  ## Ordering the new vector wrt the ordered indices
+  new_vector[ordered_indices]
+}
+
+#This function works with indexing the nth-1 position. 
+#e.g. If a value is missing for the 24th and 44th shows, i specify position 23 and 43
+wp_content_genre&lt;-append_vector(wp_content_genre, c(23, 43), NA)
+
+wp_content_run&lt;-append_vector(wp_content_run, c(5,7,9,13,13,13,13,18,18,21,23,
+                                23,23,23,23,23,23,23,23,23,23,
+                                23,23,23,23,23,23,23,23,23,23), NA)
+
+wp_content_rating&lt;-append_vector(wp_content_rating, c(19,21,21,21,
+                                                      25,25,25,25,25,25,25,25,
+                                                      25,25,25,25,25,25,25,25,
+                                                      25,25,25), NA)
+
+wp_content_vote&lt;-append_vector(wp_content_vote, c(19,21,21,21,
+                                                      25,25,25,25,25,25,25,25,
+                                                      25,25,25,25,25,25,25,25,
+                                                      25,25,25), NA)</code></pre>
+<p>After having tibbles of equal row length, we can create a combined dataframe. This will allow us to analyze the data in any way we prefer.</p>
+<p>For example, let us examine how tv show ratings varied with the number or votes with the help of boxplots.</p>
+<pre class="r"><code>movie_df &lt;- tibble(&quot;title&quot; = wp_content_titles, 
+                   &quot;year&quot; = wp_content_year, 
+                   &quot;runtime&quot; = wp_content_run, 
+                   &quot;genre&quot; = wp_content_genre, 
+                   &quot;rating&quot; = floor(wp_content_rating),
+                   &quot;vote&quot; = wp_content_vote)
+
+plot1&lt;-ggplot(data = movie_df,
+       aes(x = rating, y=vote, group=rating)) +
+  geom_boxplot()+
+  theme_bw()+
+  labs(title=&quot;IMDB Top 45 British TV shows 2021 Ratings&quot;,
+       y=&quot;No. of Votes&quot;,
+       x=&quot;Rating&quot;)+
+  theme(plot.title = element_text(size = 12, hjust = 0.5))
+
+
+plot2&lt;-ggplot(data = movie_df,
+       aes(x = rating, color=&quot;red&quot;)) +
+  geom_density()+
+  guides(color=FALSE)+
+  theme_bw()+
+  labs(title=&quot;IMDB Top 45 British TV shows 2021 Ratings (density)&quot;,
+       y=&quot;Density&quot;,
+       x=&quot;Rating&quot;)+
+  theme(plot.title = element_text(size = 12, hjust = 0.5))
+
+grid.arrange(plot2, plot1, ncol = 2, nrow = 1)</code></pre>
+<p><img src="Movies_files/figure-html/combine-1.png" width="864" style="display: block; margin: auto;" /> We can see that most of the TV shows are rated between 6 and 8, with 7 having the most rating within this IMDB dataframe. You can obviously analyze way more now that you have the data on hand.</p>
+</div>
+<div id="movie-ratings-analyzing-data" class="section level2">
+<h2>Movie ratings: Analyzing Data</h2>
+<p>Now you might be interested to know if the movie rating site has always been fair, transparent and consistent in its ratings. This is especially true after one of the most prominent rating sites, Fandango, was found in 2015 to bloating its movie ratings to help boost movie ticket sales.</p>
+<p>In 2015, Walt Hickey analyzed movie ratings displayed on the fandango website and found them to be considerably exaggerated as compared to actual fun votes that was scripted on the HTML code. You can read his article at the <a href="https://fivethirtyeight.com/features/fandango-movies-ratings/">FiveThirtyEight</a> website.</p>
+<p>To analyze movie rating consistency we require data from two snapshot periods so as to run a comparison. Thankfully, Walt made his data public on his <a href="https://github.com/fivethirtyeight/data/tree/master/fandango">Github</a> (2015) while another Github user, Mircel, shared <a href="https://github.com/mircealex/Movie_ratings_2016_17">data</a> post the analysis (2016-2017).</p>
+<pre class="r"><code>#Load data from your working directory
+#Select fandango variables only
+pre_fandago&lt;-pre%&gt;%
+  select(1,7,8, 21, 22)
+
+post_fandago&lt;-post%&gt;%
+  select(1,2,7)</code></pre>
+<p>The data sets contain movies from several years. We are interested in movies in two time periods. Movies released and rated in the year 2015 and those that were released and rated in 2016.</p>
+<pre class="r"><code>#generate year column from film column
+pre_fandago&lt;-pre_fandago%&gt;%
+  separate(FILM,
+           into=c(&quot;Film&quot;, &quot;Year&quot;),
+           sep=&quot;\\(&quot;)
+pre_fandago$Year&lt;-parse_number(pre_fandago$Year)
+
+#remain with only movies released in 2015 for pre dataset
+pre_fandago&lt;-pre_fandago%&gt;%
+  filter(Year==2015)
+
+#remain with only 2016 movies in post dataset
+post_fandago&lt;-post_fandago%&gt;%
+  filter(year==2016)</code></pre>
+<div id="analysis" class="section level4">
+<h4>Analysis</h4>
+<pre class="r"><code>#Plot 2015
+plot3&lt;-pre_fandago%&gt;%
+  ggplot()+
+  geom_density(aes(x=Fandango_Stars, fill=&quot;red&quot;, alpha=0.5))+
+  geom_density(aes(x=Fandango_Ratingvalue, fill=&quot;blue&quot;, alpha=0.5))+
+  guides(alpha=FALSE)+
+  theme_bw()+
+  scale_x_continuous(name=&quot;Fandango ratings&quot;, limits = c(0,5))+
+  scale_y_continuous(name=&quot;Density&quot;, limits = c(0.0,1.0))+
+  scale_fill_discrete(name = &quot;&quot;, labels = c(&quot;Actual ratings&quot;, 
+                                            &quot;Displayed ratings&quot;))+
+  labs(title = &quot;Difference in Fandango movie \nratings (2015)&quot;)+
+  theme(plot.title = element_text(hjust=0.5, size = 12, face=&quot;bold&quot;),
+        legend.key.size = unit(1.5, &#39;lines&#39;))
+plot3</code></pre>
+<p><img src="Movies_files/figure-html/analysis2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#Compare displayed ratings 2015vs 2016
+plot4&lt;-ggplot(data = pre_fandago, 
+       aes(x = Fandango_Stars, fill=&quot;Red&quot;, alpha=0.5)) +
+  geom_density() +
+  geom_density(data = post_fandago, 
+               aes(x = fandango, fill= &quot;blue&quot;, alpha=0.5)) +
+  guides(alpha=FALSE)+
+  theme_bw()+
+  labs(title = &quot;Comparison of Fandango ratings \n(2015 vs 2016)&quot;,
+       x = &quot;Rating&quot;,
+       y = &quot;Density&quot;) +
+  scale_x_continuous(breaks = seq(0, 5, by = 0.5), 
+                     limits = c(0,5))+
+   scale_fill_discrete(name = &quot;&quot;, labels = c(&quot;2016 ratings&quot;,
+                                             &quot;2015 ratings&quot;))+
+  theme(plot.title = element_text(hjust=0.5, size = 12, face=&quot;bold&quot;),
+        legend.key.size = unit(1.5, &#39;lines&#39;))
+plot4</code></pre>
+<p><img src="Movies_files/figure-html/analysis2-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>It is clear that in 2015 Fandango were over-bloating their ratings. Actual ratings were lower than the ratings displayed on their website. After being called out and questioned, they attributed it to a bug and promised to sort it out.</p>
+<p>Comparing the displayed ratings for 2016 movies vs 2015 movies, it seems that the 2016 displayed ratings have subsided. This shows there could have been a tweak and current ratings might reflect actual ratings.</p>
+<pre class="r"><code>pre_fandago %&gt;% 
+  group_by(Fandango_Stars) %&gt;% 
+  summarize(Percentage = n() / nrow(pre_fandago) * 100)</code></pre>
+<pre><code>## # A tibble: 5 x 2
+##   Fandango_Stars Percentage
+##            &lt;dbl&gt;      &lt;dbl&gt;
+## 1            3         8.53
+## 2            3.5      17.8 
+## 3            4        28.7 
+## 4            4.5      38.0 
+## 5            5         6.98</code></pre>
+<pre class="r"><code>post_fandago %&gt;% 
+  group_by(fandango) %&gt;% 
+  summarize(Percentage = n() / nrow(post_fandago) * 100)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   fandango Percentage
+##      &lt;dbl&gt;      &lt;dbl&gt;
+## 1      2.5      3.14 
+## 2      3        7.33 
+## 3      3.5     24.1  
+## 4      4       40.3  
+## 5      4.5     24.6  
+## 6      5        0.524</code></pre>
+<p>The Percentage of movies that displayed 4.5 and 5.0 stars really went down in 2016 as compared to 2015. Further proving the shift lower in ratings.</p>
+<p>You can do a similar analysis on any movie rating website of your choice, sourcing data via web scraping.</p>
+</div>
+</div>
+<div id="movie-ratings-comparing-data" class="section level2">
+<h2>Movie ratings: Comparing Data</h2>
+<p>Maybe the movie rating site you have been using turns out to be inconsistent and dodgy. You might want to check out other movie rating sites, but are they and different to the old site you used?</p>
+<p>Comparing several prominent movie rating sites might help you see how they compare alongside each other. Eventually you might like a site with more conservative ratings or maybe a site with higher ratings.</p>
+<pre class="r"><code>head(movie, 5)</code></pre>
+<pre><code>## # A tibble: 5 x 3
+##   FILM                           Rating_Site     Rating
+##   &lt;chr&gt;                          &lt;chr&gt;            &lt;dbl&gt;
+## 1 Avengers: Age of Ultron (2015) Rotten_Tomatoes    4.3
+## 2 Cinderella (2015)              Rotten_Tomatoes    4  
+## 3 Ant-Man (2015)                 Rotten_Tomatoes    4.5
+## 4 Do You Believe? (2015)         Rotten_Tomatoes    4.2
+## 5 Hot Tub Time Machine 2 (2015)  Rotten_Tomatoes    1.4</code></pre>
+<pre class="r"><code>#Plot all sites on the same plot to see spread of rating across sites
+plot4&lt;-movie%&gt;%
+  ggplot(aes(x=Rating, fill=Rating_Site))+
+  geom_histogram(bins=30)+
+  theme_bw()+
+  labs(title = &quot;Movie ratings by Website (2015)&quot;,
+       x= &quot;Rating&quot;,
+       y=&quot;No. of Movies&quot;)+
+  theme(plot.title = element_text(size = 12, hjust = 0.5, face = &quot;bold&quot;))
+
+plot4</code></pre>
+<p><img src="Movies_files/figure-html/analyze3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>plot5&lt;-movie%&gt;%ggplot(aes(x=Rating, fill=Rating_Site, color=Rating_Site))+
+  geom_density(alpha=0.2)+
+  theme_bw()+
+  labs(title = &quot;Movie ratings by Website (2015)&quot;,
+       x= &quot;Rating&quot;,
+       y=&quot;density&quot;)+
+  theme(plot.title = element_text(size = 12, hjust = 0.5, face = &quot;bold&quot;))
+
+plot5</code></pre>
+<p><img src="Movies_files/figure-html/analyze3-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>From this snapshot of 2015 movies, it is clear that Rotten Tomatoes has rating that are very spread out while fandango gives out the highest ratings for movies. Movie rating sites that are to the left of Fandango’s density curve, have lower ratings (more reserved).</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>This project combines data sourcing techniques i.e. web scraping, data cleaning and visualization to bring insights into movie rating websites. Websites are a treasure chest of data and one can pick up and extract interesting data! Maybe next time i shll do one for <strong>anime</strong></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

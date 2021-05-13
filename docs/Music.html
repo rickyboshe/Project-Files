@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Music</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Fredrick Boshe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">NYC Schools</a>
+</li>
+<li>
+  <a href="Music.html">Music Store</a>
+</li>
+<li>
+  <a href="Fisheries.html">USA Seafood</a>
+</li>
+<li>
+  <a href="Baseball.html">Baseball</a>
+</li>
+<li>
+  <a href="Fitness.html">Fitness</a>
+</li>
+<li>
+  <a href="Movies.html">Movies</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Music</h1>
+
+</div>
+
+
+<p><br></br></p>
+<center>
+<div id="employing-r-and-sql-to-analyze-record-label" class="section level1">
+<h1>Employing R and SQL to analyze record label 🎵</h1>
+</center>
+<p>This project combines both R and SQLite to showcase the robustness of querying data from a database and visualizing observations in R. While some data cleaning and manipulation can and will be done using query language (<a href="https://db.rstudio.com/databases/sqlite/">SQLite</a>), majority of the data work will be done using R.</p>
+<p>The database used is the <a href="https://www.sqlitetutorial.net/sqlite-sample-database/">“Chinook Database”</a>, an open source database. Markdown allows both R script and SQLite query language plus html knitting.</p>
+<p>To be able to run SQLite query on R you need to load the <a href="https://db.rstudio.com/dbi/">DBI</a> and <a href="https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html">RSQLite</a> packages in your environment.</p>
+<pre class="r"><code>library(tidyverse)
+library(DBI)
+library(RSQLite)
+library(ggplot2)
+library(plotly)
+library(lubridate)
+library(ggcorrplot)</code></pre>
+<p>After downloading the database, load it/create a connection within an R markdown chunk. You can declare the connection within the setup chunk and you wont need to constantly declare it in every subsequent chunk.</p>
+<pre class="r"><code>conn&lt;-dbConnect(SQLite(), &quot;chinook.db&quot;)
+tables &lt;- dbListTables(conn)</code></pre>
+<p>The reason i prefer running sql queries on their own chunks in R markdown is because it allows to copy and paste SQL from other terminals, no formatting required. Also, SQL syntax is highlighted and has auto-suggestions. Very nifty!</p>
+<pre class="sql"><code>--Preview the tables in the database
+SELECT
+    name,
+    type
+FROM sqlite_master
+WHERE type IN (&quot;table&quot;,&quot;view&quot;);
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">album</td>
+<td align="left">table</td>
+</tr>
+<tr class="even">
+<td align="left">artist</td>
+<td align="left">table</td>
+</tr>
+<tr class="odd">
+<td align="left">customer</td>
+<td align="left">table</td>
+</tr>
+<tr class="even">
+<td align="left">employee</td>
+<td align="left">table</td>
+</tr>
+<tr class="odd">
+<td align="left">genre</td>
+<td align="left">table</td>
+</tr>
+<tr class="even">
+<td align="left">invoice</td>
+<td align="left">table</td>
+</tr>
+<tr class="odd">
+<td align="left">invoice_line</td>
+<td align="left">table</td>
+</tr>
+<tr class="even">
+<td align="left">media_type</td>
+<td align="left">table</td>
+</tr>
+<tr class="odd">
+<td align="left">playlist</td>
+<td align="left">table</td>
+</tr>
+<tr class="even">
+<td align="left">playlist_track</td>
+<td align="left">table</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>After creating a query to trim, combine or filter tables from the database, it is possible to store the resulting table in order to use it with R commands. Just specify “<em>output.var</em>” and the name you would like to give the dataframe.</p>
+<pre class="sql"><code>---Most sold genres in the USA
+
+WITH USA_tracks AS 
+(SELECT il.quantity, il.track_id
+FROM invoice_line as il
+INNER JOIN invoice as i ON i.invoice_id=il.invoice_id
+WHERE i.billing_country=&quot;USA&quot;)
+
+SELECT g.name as genre_name, SUM(ut.quantity) as quantity_sold
+FROM track as t
+INNER JOIN USA_tracks as ut ON ut.track_id=t.track_id
+INNER JOIN genre as g ON g.genre_id=t.genre_id
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10;
+</code></pre>
+<p>Exploring the resulting table using R and ggplot2. Being able to utilize both languages/tools helps save the storage space (saving only the data you need) and subsequently exploring it with R visual library.</p>
+<p>Below is an example trying to figure out the best selling genres in the USA. This should help a record label to decide which new artists tosign onto a label. For example, a pop, punk, blues and hip hop artists walking through the door and management can only select 3.</p>
+<pre class="r"><code>#Looking at 
+genres_prop&lt;-genres%&gt;%
+  drop_na(quantity_sold)%&gt;%
+  mutate(prop_quantity=quantity_sold/sum(quantity_sold))
+
+plot1&lt;-genres_prop%&gt;%
+  ggplot(aes(x=reorder(factor(genre_name), -quantity_sold), y=quantity_sold, fill=genre_name))+
+  geom_col(alpha = 0.8, width = 0.85) +
+  theme_minimal()+
+  labs(title = &quot;Most selling genres in the USA&quot;,
+       y=&quot;No. Tracks Sold&quot;,
+       x=&quot;Genre&quot;)+
+  theme(plot.title = element_text(hjust = 0.5, size = 12, face=&quot;bold&quot;, 
+                                  margin = margin(t = 0, r = 0, b = 15, l = 0)),
+        axis.title.y = element_text(margin = margin(t = 0, r = 15, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
+        legend.position=&quot;none&quot;)
+plot1</code></pre>
+<p><img src="Music_files/figure-html/plot1-1.png" width="100%" height="100%" /> Out of the four artists, it would be wise to select the artists producing <strong>Punk</strong>, <strong>Blues</strong> and <strong>Pop</strong> as they are the three best performing genres out of the four artists, in the USA.</p>
+<p>Back to SQL, this time querying the database to get sales figures per customer rep/support. Trying to see which customer support agents performed the best (i.e. brought the most sales)</p>
+<pre class="sql"><code>--Best performing sales rep/customer support
+WITH sales_cus AS (
+SELECT e.first_name||&quot; &quot;||e.last_name as sales_rep, e.hire_date, e.birthdate, e.title, c.customer_id
+FROM employee as e
+INNER JOIN customer as c ON c.support_rep_id = e.employee_id
+)
+
+SELECT sc.sales_rep, sc.hire_date, sc.birthdate, sc.title, SUM(i.total) as total_sales
+FROM invoice as i
+INNER JOIN sales_cus as sc ON sc.customer_id=i.customer_id
+GROUP BY 1
+ORDER BY 5 DESC;
+</code></pre>
+<p>Once the desirable dataframe is saved, we can use R visual library to plot performance and even analyze factors contributing to performance of a sales rep i.e. correlation.</p>
+<pre class="r"><code>#format dates
+
+sales$hire_date&lt;-as.numeric(ymd_hms(sales$hire_date, tz=&quot;Europe/Berlin&quot;))
+sales$birthdate&lt;-as.numeric(ymd_hms(sales$birthdate, tz=&quot;Europe/Berlin&quot;))
+
+
+#Plot performance
+plot2&lt;-sales%&gt;%
+  ggplot(aes(x=sales_rep, y=total_sales, color=sales_rep))+
+  geom_point()+
+  theme_minimal()+
+  labs(title = &quot;Best performing Sales Rep&quot;,
+       y=&quot;Amount Sold&quot;,
+       x=&quot;Sales Rep&quot;)+
+  ylim(1000,2000)+
+  theme(plot.title = element_text(hjust = 0.5, size = 12, face=&quot;bold&quot;, 
+                                  margin = margin(t = 0, r = 0, b = 15, l = 0)),
+        axis.title.y = element_text(margin = margin(t = 0, r = 15, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
+        legend.position=&quot;none&quot;)
+plot2</code></pre>
+<p><img src="Music_files/figure-html/sales-1.png" width="100%" height="100%" /></p>
+<pre class="r"><code>#check correlation between factors
+corr &lt;- sales%&gt;%
+  select(-1,-4)%&gt;%
+  cor(use = &quot;pairwise.complete.obs&quot;)
+
+
+plot3 &lt;- ggcorrplot(
+  corr, method = &quot;circle&quot;, title = &quot;Factors Influencing Performance&quot;)+
+  theme(plot.title = element_text(color=&quot;black&quot;, size=12, face=&quot;bold&quot;, hjust = 0.5,
+                                  margin = margin(t = 0, r = 0, b = 15, l = 0)))
+plot3</code></pre>
+<p><img src="Music_files/figure-html/sales-2.png" width="100%" height="100%" /></p>
+<p>Jane peacock was the best performing sales support with close to 1750 sold. It would seem that hiring date has a strong negative correlation (r=-0.95) with total sales. Being hired earlier has a sales support rep at an advantage over someone that was hired later.</p>
+<p>There is also a slight positive correlation (r=0.25) between birth date and performance. Younger sales support seem to have a slight advantage over older sales reps. Although this observation is not statistically significance.</p>
+<p>Lastly, we can look at countries with the best customer values (lifetime values) as these could be countries the record label might look into increasing customer acquisition efforts.</p>
+<pre class="sql"><code>--Countries with the best customer value
+SELECT c.country, COUNT(DISTINCT c.customer_id) as no_customers, i.invoice_id, SUM(il.unit_price) as total_value, 
+       SUM(il.unit_price) / count(distinct c.customer_id) customer_lifetime_value,
+       SUM(il.unit_price) / count(distinct il.invoice_id) average_order
+FROM customer as c
+INNER JOIN invoice as i ON i.customer_id=c.customer_id
+INNER JOIN invoice_line as il ON il.invoice_id=i.invoice_id
+GROUP BY 1
+ORDER BY 2 DESC;
+</code></pre>
+<pre class="r"><code>#Recode countries with less than 2 customers 
+country&lt;-country%&gt;%
+  select(-invoice_id)%&gt;%
+  mutate(country=ifelse(no_customers&lt;2,&quot;Others&quot;, country))%&gt;%
+  group_by(country)%&gt;%
+  mutate(no_customers=sum(no_customers))%&gt;%
+  mutate(total_value=sum(total_value))%&gt;%
+  mutate(customer_lifetime_value=mean(customer_lifetime_value))%&gt;%
+  mutate(average_order=mean(average_order))%&gt;%
+  distinct()
+
+#Visualize spread
+country_longer&lt;-country%&gt;%
+  pivot_longer(cols = c(2:5),
+               names_to=&quot;customer&quot;,
+               values_to=&quot;value&quot;)
+
+plot4&lt;-country_longer%&gt;%
+ ggplot(aes(x = country, y=value, fill=country))+
+  geom_bar(stat = &#39;identity&#39;)+
+  theme_minimal()+
+  geom_col(alpha = 0.8, width = 0.85) +
+  facet_wrap(vars(customer), ncol = 2, scales=&quot;free&quot;)+
+  labs(title=&quot;Customer Performance by Country&quot;, x = &quot;Country&quot;, y = &quot;Customer Performance&quot;)+
+  theme(plot.title = element_text(hjust = 0.5, size = 12, face=&quot;bold&quot;, 
+                                  margin = margin(t = 0, r = 0, b = 15, l = 0)),
+        axis.title.y = element_text(margin = margin(t = 0, r = 15, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
+        axis.text.x = element_text(size=7.7, angle=-45, vjust = -2),
+        axis.ticks = element_blank(),
+        legend.position=&quot;none&quot;)
+plot4</code></pre>
+<p><img src="Music_files/figure-html/plot4-1.png" width="100%" height="100%" /></p>
+<p>The USA has the most number of customers as well as the highest total value of orders. However, the Czech Republic has the highest customer lifetime value, meaning it is a market that one should invest more in acquiring customers.</p>
+<p>Once done, do not forget to disconnect the database from your environment.</p>
+<pre class="r"><code>dbDisconnect(conn)</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

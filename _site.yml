@@ -1,0 +1,17 @@
+name: "Fredrick B"
+navbar:
+  title: "Fredrick Boshe"
+  left:
+    - text: "NYC Schools"
+      href: index.html
+    - text: "Music Store"
+      href: Music.html
+    - text: "USA Seafood"
+      href: Fisheries.html
+    - text: "Baseball"
+      href: Baseball.html
+    - text: "Fitness"
+      href: Fitness.html
+    - text: "Movies"
+      href: Movies.html
+output_dir: "docs"

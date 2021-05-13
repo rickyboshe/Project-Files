@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Baseball</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Fredrick Boshe</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">NYC Schools</a>
+</li>
+<li>
+  <a href="Music.html">Music Store</a>
+</li>
+<li>
+  <a href="Fisheries.html">USA Seafood</a>
+</li>
+<li>
+  <a href="Baseball.html">Baseball</a>
+</li>
+<li>
+  <a href="Fitness.html">Fitness</a>
+</li>
+<li>
+  <a href="Movies.html">Movies</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Baseball</h1>
+
+</div>
+
+
+<br></br>
+<center>
+<div id="database-employing-sql-to-create-a-baseball-db" class="section level1">
+<h1>Database: Employing SQL to create a Baseball DB ⚾</h1>
+</center>
+<p>This project is about utilizing the power of SQL to create a database out of several Excel CSV files that exist individually. The goal is to create a database that will house the several CSV files under one roof. This includes creating a database Schema, linking the tables with <em>primary keys</em> and <em>foreign keys</em>.</p>
+<p>As usual, i shall be running my SQL queries on an R markdown book to allow publishing queries online. A brief introduction on using SQL in R, the packages and requirements can be found in another project i worked on <a href="https://rickyboshe.github.io/projects/Music.html">earlier</a>.</p>
+<p>This project will look at Baseball, America’s favorite past time. It looks at game information and stats from a record of over 170,000 games. The games are are chronologically ordered and occur between 1871 and 2016.</p>
+<p>For those unfamiliar with Baseball, it might be useful to spend sometime time reading up on the key aspects of the game.</p>
+<p>For each game we have:</p>
+<ul>
+<li>general information on the game</li>
+<li>team level stats for each team</li>
+<li>a list of players from each team, numbered, with their defensive positions</li>
+<li>the umpires that officiated the game</li>
+<li>some ‘awards’, like winning and losing pitcher</li>
+</ul>
+<p>A game_log_fields.txt file that tell us that the player number corresponds with the order in which they batted.</p>
+<p>This projects analyzes data from <a href="https://www.retrosheet.org/#">Retrosheet</a>.</p>
+<p>R code can be used to import CSV files as tables into a database. We initialize a new/empty database first.</p>
+<pre class="r"><code>#&#39;Load data from your working directory into R global environment
+##Load the tables into a database
+conn &lt;- dbConnect(SQLite(), &quot;mlb.db&quot;) #initialize a new database
+
+dbWriteTable(conn=conn, name = &quot;game&quot;, value = game, row.names=FALSE, 
+             header=TRUE)
+dbWriteTable(conn=conn, name = &quot;park&quot;, value = park, row.names=FALSE, 
+             header=TRUE)
+dbWriteTable(conn=conn, name = &quot;people&quot;, value = people, row.names=FALSE, 
+             header=TRUE)
+dbWriteTable(conn=conn, name = &quot;team&quot;, value = team, row.names=FALSE, 
+             header=TRUE)
+
+#Check if all tables have been added to the database
+tables &lt;- dbListTables(conn)</code></pre>
+<div id="defensive-positions" class="section level2">
+<h2>Defensive Positions</h2>
+<p>You can read up on player defensive positions [here] (<a href="https://baseballcoachinglab.com/baseball-positions/" class="uri">https://baseballcoachinglab.com/baseball-positions/</a>). The listed positions are:</p>
+<ul>
+<li>Pitcher</li>
+<li>Catcher</li>
+<li>1st Base</li>
+<li>2nd Base</li>
+<li>3rd Base</li>
+<li>Shortstop</li>
+<li>Left Field</li>
+<li>Center Field</li>
+<li>Right Field</li>
+</ul>
+<center>
+<img src="images/Baseball.png" />
+</center>
+<p>The data uploaded has “10 positions” which might be a mistake by Retrosheets. They have it listed as position 0. But we do not have position 0 in our data. Therefore i will leave out this data.</p>
+</div>
+<div id="leagues" class="section level2">
+<h2>Leagues</h2>
+<p>According to Wikipedia, there are two major professional baseball leagues, the American (AL) and National (NL). The data from retrosheets contains a total of 6 different leagues. The additional leagues are mostly defunct leagues from the old days, like the Federal league which ended in 1915.</p>
+<ul>
+<li>NL: <a href="https://en.wikipedia.org/wiki/National_League">National League</a></li>
+<li>AL: <a href="https://en.wikipedia.org/wiki/American_League">American League</a></li>
+<li>AA: <a href="https://en.wikipedia.org/wiki/American_Association_%2819th_century%29">American Association</a></li>
+<li>FL: <a href="https://en.wikipedia.org/wiki/Federal_League">Federal League</a></li>
+<li>PL: <a href="https://en.wikipedia.org/wiki/Players%27_League">Players League</a></li>
+<li>UA: <a href="https://en.wikipedia.org/wiki/Union_Association">Union Association</a></li>
+</ul>
+<pre class="sql"><code>--Preview the tables in the database
+SELECT
+    name,
+    type
+FROM sqlite_master
+WHERE type IN (&quot;table&quot;,&quot;view&quot;);
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>4 records</caption>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">game</td>
+<td align="left">table</td>
+</tr>
+<tr class="even">
+<td align="left">park</td>
+<td align="left">table</td>
+</tr>
+<tr class="odd">
+<td align="left">people</td>
+<td align="left">table</td>
+</tr>
+<tr class="even">
+<td align="left">team</td>
+<td align="left">table</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can manipulate the tables within the database. For the game table we would like to have a unique identifier column for games, “game_id”.</p>
+<pre class="sql"><code>--Create a new column in the game table
+ALTER TABLE game
+ADD COLUMN game_id TEXT;
+</code></pre>
+<p>The unique identifier is a combination of the home team name, the date of the game played and the number of game. The number of game is basically if it was a single game, the second game in a double header etc.</p>
+<pre class="sql"><code>--Create fill in rows
+UPDATE game
+SET game_id = h_name||date||number_of_game;
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT game_id, date,
+       h_name, number_of_game
+FROM game
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">game_id</th>
+<th align="right">date</th>
+<th align="left">h_name</th>
+<th align="right">number_of_game</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">FW118710504.00.0</td>
+<td align="right">18710504</td>
+<td align="left">FW1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">WS318710505.00.0</td>
+<td align="right">18710505</td>
+<td align="left">WS3</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">RC118710506.00.0</td>
+<td align="right">18710506</td>
+<td align="left">RC1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">CH118710508.00.0</td>
+<td align="right">18710508</td>
+<td align="left">CH1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">TRO18710509.00.0</td>
+<td align="right">18710509</td>
+<td align="left">TRO</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="normalization" class="section level1">
+<h1>Normalization</h1>
+<p>Normalization is the process of restructuring the data to avoid duplicates, redundancy etc. This makes a database easier to work with. It can involve splitting of tables, removing of columns and creating new tables/columns.</p>
+<p>There are several opportunities to normalize our data:</p>
+<ul>
+<li>Game: Columns with player Ids and player names can also be found in the <em>People</em> table. So we can remove these columns from the <em>Game</em> table.</li>
+<li>Game: This table has each team’s player listings (9 players and their positions). We can extract this data into a separate table that tracks player appearances and their positions.</li>
+<li>Game: Umpires also exhibit the same issue as players in this table. We should extract them and have them in either their own table or make one table for players, umpires and managers.</li>
+<li>Game: There is a repetition for the offensive and defensive stats for both home teams and the visiting teams. ideally, we would like to remedy this by splitting them into a table lists each game twice, one for each team. Then drop the column repetition.</li>
+<li>Park: We cn reproduce the start and end years using <em>Game</em> table. We would also like to have a complete state attribute, so we leave it as is (i.e. state and city).</li>
+<li>People: We can reproduce the debut dates using the <em>Game</em> table.</li>
+<li>Team: We can reproduce the start, end and sequence columns using <em>Game</em> table.</li>
+</ul>
+<div id="database-schema" class="section level2">
+<h2>Database Schema</h2>
+<p>It helps to jot down a schema for the normalized database. Identify the primary and foreign keys and how tables relate to each other. I prefer using the free <a href="https://app.dbdesigner.net/designer/schema/guest_template">dbdesigner</a> tool.</p>
+<center>
+<img src="images/Schema.png" />
+</center>
+<p>All the normalization opportunities identified before will be done with SQL query in the chunks below. Click on the “code” to see more information and the code.</p>
+<div id="create-person-table" class="section level4">
+<h4>Create person Table</h4>
+<pre class="sql"><code>--Create Person table
+CREATE TABLE person (person_id TEXT PRIMARY KEY,
+              first_name TEXT,
+              second_name TEXT);</code></pre>
+<pre class="sql"><code>--Populate person table
+INSERT INTO person
+SELECT p.id, p.first, p.last 
+FROM people as p; 
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT *
+FROM person
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">person_id</th>
+<th align="left">first_name</th>
+<th align="left">second_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">aardd001</td>
+<td align="left">David</td>
+<td align="left">Aardsma</td>
+</tr>
+<tr class="even">
+<td align="left">aaroh101</td>
+<td align="left">Hank</td>
+<td align="left">Aaron</td>
+</tr>
+<tr class="odd">
+<td align="left">aarot101</td>
+<td align="left">Tommie</td>
+<td align="left">Aaron</td>
+</tr>
+<tr class="even">
+<td align="left">aased001</td>
+<td align="left">Don</td>
+<td align="left">Aase</td>
+</tr>
+<tr class="odd">
+<td align="left">abada001</td>
+<td align="left">Andy</td>
+<td align="left">Abad</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="create-park_new-table" class="section level4">
+<h4>Create park_new Table</h4>
+<pre class="sql"><code>--Create park table
+CREATE TABLE park_new (park_id TEXT PRIMARY KEY,
+                   name TEXT,
+                   nickname TEXT,
+                   city TEXT,
+                   state TEXT,
+                   notes TEXT);
+ 
+</code></pre>
+<pre class="sql"><code>--Populate park table
+INSERT INTO park_new
+SELECT pk.park_id, pk.name, pk.aka, pk.city, pk.state, pk.notes 
+FROM park as pk; 
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT *
+FROM park_new
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<colgroup>
+<col width="5%" />
+<col width="21%" />
+<col width="28%" />
+<col width="7%" />
+<col width="4%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">park_id</th>
+<th align="left">name</th>
+<th align="left">nickname</th>
+<th align="left">city</th>
+<th align="left">state</th>
+<th align="left">notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ALB01</td>
+<td align="left">Riverside Park</td>
+<td align="left">NA</td>
+<td align="left">Albany</td>
+<td align="left">NY</td>
+<td align="left">TRN:9/11/80;6/15&amp;9/10/1881;5/16-5/18&amp;5/30/1882</td>
+</tr>
+<tr class="even">
+<td align="left">ALT01</td>
+<td align="left">Columbia Park</td>
+<td align="left">NA</td>
+<td align="left">Altoona</td>
+<td align="left">PA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">ANA01</td>
+<td align="left">Angel Stadium of Anaheim</td>
+<td align="left">Edison Field; Anaheim Stadium</td>
+<td align="left">Anaheim</td>
+<td align="left">CA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">ARL01</td>
+<td align="left">Arlington Stadium</td>
+<td align="left">NA</td>
+<td align="left">Arlington</td>
+<td align="left">TX</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">ARL02</td>
+<td align="left">Rangers Ballpark in Arlington</td>
+<td align="left">The Ballpark in Arlington; Ameriquest Fl</td>
+<td align="left">Arlington</td>
+<td align="left">TX</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="create-league-table" class="section level4">
+<h4>Create league Table</h4>
+<pre class="sql"><code>--Create league table
+CREATE TABLE IF NOT EXISTS league (
+      league_id TEXT PRIMARY KEY,
+      name TEXT); -- If NOT EXIST helps to ensure no duplicates
+</code></pre>
+<p>Insert league values i.e. names of the six league IDs. (not present in any existing table so far)</p>
+<pre class="sql"><code>--Populate league table
+INSERT INTO league
+VALUES(&quot;NL&quot;, &quot;National League&quot;),
+      (&quot;AL&quot;, &quot;American League&quot;),
+      (&quot;AA&quot;, &quot;American Association&quot;),
+      (&quot;FL&quot;, &quot;Federal League&quot;),
+      (&quot;PL&quot;, &quot;Players League&quot;),
+      (&quot;UA&quot;, &quot;Union Association&quot;); 
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT *
+FROM league
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">league_id</th>
+<th align="left">name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NL</td>
+<td align="left">National League</td>
+</tr>
+<tr class="even">
+<td align="left">AL</td>
+<td align="left">American League</td>
+</tr>
+<tr class="odd">
+<td align="left">AA</td>
+<td align="left">American Association</td>
+</tr>
+<tr class="even">
+<td align="left">FL</td>
+<td align="left">Federal League</td>
+</tr>
+<tr class="odd">
+<td align="left">PL</td>
+<td align="left">Players League</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="create-appearance_type-table" class="section level4">
+<h4>Create appearance_type Table</h4>
+<p>The data for the table “appearance_type” exists in a separate csv file. Import and load values to the table.</p>
+<pre class="sql"><code>--Make sure no pre-existing appearance_type table
+DROP TABLE IF EXISTS appearance_type; 
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT *
+FROM appearance_type
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">appearance_type_id</th>
+<th align="left">name</th>
+<th align="left">category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">O1</td>
+<td align="left">Batter 1</td>
+<td align="left">offense</td>
+</tr>
+<tr class="even">
+<td align="left">O2</td>
+<td align="left">Batter 2</td>
+<td align="left">offense</td>
+</tr>
+<tr class="odd">
+<td align="left">O3</td>
+<td align="left">Batter 3</td>
+<td align="left">offense</td>
+</tr>
+<tr class="even">
+<td align="left">O4</td>
+<td align="left">Batter 4</td>
+<td align="left">offense</td>
+</tr>
+<tr class="odd">
+<td align="left">O5</td>
+<td align="left">Batter 5</td>
+<td align="left">offense</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="create-team_new-table" class="section level4">
+<h4>Create team_new Table</h4>
+<pre class="sql"><code>--Create team_new table
+CREATE TABLE team_new (team_id TEXT PRIMARY KEY,
+                       league_id TEXT,
+                       city TEXT,
+                       nickname TEXT,
+                       franch_id,
+                       FOREIGN KEY (league_id) 
+                       REFERENCES league(league_id));
+ </code></pre>
+<pre class="sql"><code>--Populate team_new table
+INSERT OR IGNORE INTO team_new --Insert or Ignore helps deal with any duplicates on Primary Key
+SELECT t.team_id, t.league, t.city, t.nickname, t.franch_id 
+FROM team as t; 
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT *
+FROM team_new
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">team_id</th>
+<th align="left">league_id</th>
+<th align="left">city</th>
+<th align="left">nickname</th>
+<th align="left">franch_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ALT</td>
+<td align="left">UA</td>
+<td align="left">Altoona</td>
+<td align="left">Mountain Cities</td>
+<td align="left">ALT</td>
+</tr>
+<tr class="even">
+<td align="left">ARI</td>
+<td align="left">NL</td>
+<td align="left">Arizona</td>
+<td align="left">Diamondbacks</td>
+<td align="left">ARI</td>
+</tr>
+<tr class="odd">
+<td align="left">BFN</td>
+<td align="left">NL</td>
+<td align="left">Buffalo</td>
+<td align="left">Bisons</td>
+<td align="left">BFN</td>
+</tr>
+<tr class="even">
+<td align="left">BFP</td>
+<td align="left">PL</td>
+<td align="left">Buffalo</td>
+<td align="left">Bisons</td>
+<td align="left">BFP</td>
+</tr>
+<tr class="odd">
+<td align="left">BL1</td>
+<td align="left">NA</td>
+<td align="left">Baltimore</td>
+<td align="left">Canaries</td>
+<td align="left">BL1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="create-game_new-table" class="section level4">
+<h4>Create game_new Table</h4>
+<pre class="sql"><code>--Create game_new table
+CREATE TABLE game_new (game_id TEXT PRIMARY KEY,
+                       date INTEGER,
+                       number_of_game INTEGER,
+                       park_id TEXT,
+                       lengths_out INTEGER,
+                       day BOOLEAN,
+                       completion TEXT,
+                       forfeit TEXT,
+                       protest TEXT,
+                       attendance NUMERIC,
+                       lengths_minute NUMERIC,
+                       additional_info TEXT,
+                       acquisition_info TEXT,
+                       FOREIGN KEY (park_id) 
+                       REFERENCES park_new(park_id));
+ </code></pre>
+<p>SQLite does not have the “BOOLEAN” data type. We must code the columns to 1 or 0 before passing them to the table we are creating.</p>
+<pre class="sql"><code>--Populate game_new table
+INSERT OR IGNORE INTO game_new 
+SELECT game_id, date, number_of_game, park_id,length_outs,
+CASE
+       WHEN day_night = &quot;D&quot; THEN 1
+       WHEN day_night = &quot;N&quot; THEN 0
+       ELSE NULL
+       END
+       AS day,
+      completion, forfeit, protest, attendance,
+      length_minutes, additional_info, acquisition_info
+FROM game; 
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT *
+FROM game_new
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<colgroup>
+<col width="11%" />
+<col width="5%" />
+<col width="9%" />
+<col width="5%" />
+<col width="7%" />
+<col width="2%" />
+<col width="7%" />
+<col width="5%" />
+<col width="5%" />
+<col width="7%" />
+<col width="9%" />
+<col width="10%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">game_id</th>
+<th align="right">date</th>
+<th align="right">number_of_game</th>
+<th align="left">park_id</th>
+<th align="right">lengths_out</th>
+<th align="right">day</th>
+<th align="left">completion</th>
+<th align="left">forfeit</th>
+<th align="left">protest</th>
+<th align="right">attendance</th>
+<th align="right">lengths_minute</th>
+<th align="left">additional_info</th>
+<th align="left">acquisition_info</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">FW118710504.00.0</td>
+<td align="right">18710504</td>
+<td align="right">0</td>
+<td align="left">FOR01</td>
+<td align="right">54</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">200</td>
+<td align="right">120</td>
+<td align="left">NA</td>
+<td align="left">Y</td>
+</tr>
+<tr class="even">
+<td align="left">WS318710505.00.0</td>
+<td align="right">18710505</td>
+<td align="right">0</td>
+<td align="left">WAS01</td>
+<td align="right">54</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">5000</td>
+<td align="right">145</td>
+<td align="left">HTBF</td>
+<td align="left">Y</td>
+</tr>
+<tr class="odd">
+<td align="left">RC118710506.00.0</td>
+<td align="right">18710506</td>
+<td align="right">0</td>
+<td align="left">RCK01</td>
+<td align="right">54</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">1000</td>
+<td align="right">140</td>
+<td align="left">NA</td>
+<td align="left">Y</td>
+</tr>
+<tr class="even">
+<td align="left">CH118710508.00.0</td>
+<td align="right">18710508</td>
+<td align="right">0</td>
+<td align="left">CHI01</td>
+<td align="right">54</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">5000</td>
+<td align="right">150</td>
+<td align="left">NA</td>
+<td align="left">Y</td>
+</tr>
+<tr class="odd">
+<td align="left">TRO18710509.00.0</td>
+<td align="right">18710509</td>
+<td align="right">0</td>
+<td align="left">TRO01</td>
+<td align="right">54</td>
+<td align="right">1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">3250</td>
+<td align="right">145</td>
+<td align="left">HTBF</td>
+<td align="left">Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="create-team_appearance-table" class="section level4">
+<h4>Create team_appearance Table</h4>
+<p>This is our first complex query that contains several <em>Foreign keys</em> and a compund <em>Primary key</em>.</p>
+<pre class="sql"><code>--Create team_appearance table
+CREATE TABLE IF NOT EXISTS team_appearance (
+      team_id TEXT,
+      game_id TEXT,
+      home BOOLEAN,
+      league_id TEXT,
+      score INTEGER,
+      line_score TEXT,
+      at_bats INTEGER,
+      hits INTEGER,
+      doubles INTEGER,
+      triples INTEGER,
+      homeruns INTEGER,
+      rbi INTEGER,
+      sacrifice_hits INTEGER,
+      sacrifice_flies INTEGER,
+      hit_by_pitch INTEGER,
+      walks INTEGER,
+      intentional_walks INTEGER,
+      strikeouts INTEGER,
+      stolen_bases INTEGER,
+      caught_stealing INTEGER,
+      grounded_into_double INTEGER,
+      first_catcher_interference INTEGER,
+      left_on_base INTEGER,
+      pitchers_used INTEGER,
+      individual_earned_runs INTEGER,
+      team_earned_runs INTEGER,
+      wild_pitches INTEGER,
+      balks INTEGER,
+      putouts INTEGER,
+      assists INTEGER,
+      errors INTEGER,
+      passed_balls INTEGER,
+      double_plays INTEGER,
+      triple_plays INTEGER,
+      PRIMARY KEY (team_id, game_id),
+      FOREIGN KEY (team_id) REFERENCES team_new(team_id),
+      FOREIGN KEY (game_id) REFERENCES game_new(game_id),
+      FOREIGN KEY (team_id) REFERENCES team_new(team_id)
+  );
+
+ </code></pre>
+<p>Populating this table also requires some complex queries, specifically the use of the <strong>UNION</strong> function.</p>
+<pre class="sql"><code>--Populate team_appearance table
+INSERT OR IGNORE INTO team_appearance
+      SELECT
+          h_name,
+          game_id,
+          1 AS home,
+          h_league,
+          h_score,
+          h_line_score,
+          h_at_bats,
+          h_hits,
+          h_doubles,
+          h_triples,
+          h_homeruns,
+          h_rbi,
+          h_sacrifice_hits,
+          h_sacrifice_flies,
+          h_hit_by_pitch,
+          h_walks,
+          h_intentional_walks,
+          h_strikeouts,
+          h_stolen_bases,
+          h_caught_stealing,
+          h_grounded_into_double,
+          h_first_catcher_interference,
+          h_left_on_base,
+          h_pitchers_used,
+          h_individual_earned_runs,
+          h_team_earned_runs,
+          h_wild_pitches,
+          h_balks,
+          h_putouts,
+          h_assists,
+          h_errors,
+          h_passed_balls,
+          h_double_plays,
+          h_triple_plays
+      FROM game
+  
+  UNION
+  
+      SELECT    
+          v_name,
+          game_id,
+          0 AS home,
+          v_league,
+          v_score,
+          v_line_score,
+          v_at_bats,
+          v_hits,
+          v_doubles,
+          v_triples,
+          v_homeruns,
+          v_rbi,
+          v_sacrifice_hits,
+          v_sacrifice_flies,
+          v_hit_by_pitch,
+          v_walks,
+          v_intentional_walks,
+          v_strikeouts,
+          v_stolen_bases,
+          v_caught_stealing,
+          v_grounded_into_double,
+          v_first_catcher_interference,
+          v_left_on_base,
+          v_pitchers_used,
+          v_individual_earned_runs,
+          v_team_earned_runs,
+          v_wild_pitches,
+          v_balks,
+          v_putouts,
+          v_assists,
+          v_errors,
+          v_passed_balls,
+          v_double_plays,
+          v_triple_plays
+      from game; 
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT team_id
+FROM team_appearance
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">team_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ALT</td>
+</tr>
+<tr class="even">
+<td align="left">ALT</td>
+</tr>
+<tr class="odd">
+<td align="left">ALT</td>
+</tr>
+<tr class="even">
+<td align="left">ALT</td>
+</tr>
+<tr class="odd">
+<td align="left">ALT</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="create-person_appearance-table" class="section level4">
+<h4>Create person_appearance Table</h4>
+<pre class="sql"><code>--Create person_appearance table
+CREATE TABLE IF NOT EXISTS person_appearance (
+      appearance_id TEXT PRIMARY KEY,
+      person_id TEXT,
+      team_id TEXT,
+      game_id TEXT,
+      appearance_type_id TEXT,
+      FOREIGN KEY (person_id) REFERENCES person(person_id),
+      FOREIGN KEY (team_id) REFERENCES team_new(team_id),
+      FOREIGN KEY (game_id) REFERENCES game_new(game_id),
+      FOREIGN KEY (appearance_type_id) REFERENCES appearance_type(appearance_type_id));
+ </code></pre>
+<pre class="sql"><code>--Populate person_appearance table
+INSERT OR IGNORE INTO person_appearance (
+      game_id,
+      team_id,
+      person_id,
+      appearance_type_id
+  ) 
+      SELECT
+          game_id,
+          NULL,
+          hp_umpire_id,
+          &quot;UHP&quot;
+      FROM game
+      WHERE hp_umpire_id IS NOT NULL    
+  
+  UNION
+  
+      SELECT
+          game_id,
+          NULL,
+          [1b_umpire_id],
+          &quot;U1B&quot;
+      FROM game
+      WHERE &quot;1b_umpire_id&quot; IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          NULL,
+          [2b_umpire_id],
+          &quot;U2B&quot;
+      FROM game
+      WHERE [2b_umpire_id] IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          NULL,
+          [3b_umpire_id],
+          &quot;U3B&quot;
+      FROM game
+      WHERE [3b_umpire_id] IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          NULL,
+          lf_umpire_id,
+          &quot;ULF&quot;
+      FROM game
+      WHERE lf_umpire_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          NULL,
+          rf_umpire_id,
+          &quot;URF&quot;
+      FROM game
+      WHERE rf_umpire_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          v_name,
+          v_manager_id,
+          &quot;MM&quot;
+      FROM game
+      WHERE v_manager_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          h_name,
+          h_manager_id,
+          &quot;MM&quot;
+      FROM game
+      WHERE h_manager_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          CASE
+              WHEN h_score &gt; v_score THEN h_name
+              ELSE v_name
+              END,
+          winning_pitcher_id,
+          &quot;AWP&quot;
+      FROM game
+      WHERE winning_pitcher_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          CASE
+              WHEN h_score &lt; v_score THEN h_name
+              ELSE v_name
+              END,
+          losing_pitcher_id,
+          &quot;ALP&quot;
+      FROM game
+      WHERE losing_pitcher_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          CASE
+              WHEN h_score &gt; v_score THEN h_name
+              ELSE v_name
+              END,
+          saving_pitcher_id,
+          &quot;ASP&quot;
+      FROM game
+      WHERE saving_pitcher_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          CASE
+              WHEN h_score &gt; v_score THEN h_name
+              ELSE v_name
+              END,
+          winning_rbi_batter_id,
+          &quot;AWB&quot;
+      FROM game
+      WHERE winning_rbi_batter_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          v_name,
+          v_starting_pitcher_id,
+          &quot;PSP&quot;
+      FROM game
+      WHERE v_starting_pitcher_id IS NOT NULL
+  
+  UNION
+  
+      SELECT
+          game_id,
+          h_name,
+          h_starting_pitcher_id,
+          &quot;PSP&quot;
+      FROM game
+      WHERE h_starting_pitcher_id IS NOT NULL;
+ 
+</code></pre>
+<pre class="sql"><code>--Check if query worked
+SELECT person_id
+FROM person_appearance
+LIMIT 5;
+</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">person_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">maplb901</td>
+</tr>
+<tr class="even">
+<td align="left">curte801</td>
+</tr>
+<tr class="odd">
+<td align="left">murpj104</td>
+</tr>
+<tr class="even">
+<td align="left">hodnc101</td>
+</tr>
+<tr class="odd">
+<td align="left">sullt101</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This should effectively normalize your database and make the relations between the newly created tables, easier to navigate through. This project has no visualizations as it was to work on just building a database.</p>
+<p>Finally we remove the original tables that were uploaded from CSV files to remain with only the normalized tables from our schema. This is followed with disconnecting the database.</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

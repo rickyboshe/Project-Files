@@ -1,0 +1,42 @@
+---
+title: "Blogs"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    collapsed: false
+    number_sections: false
+    toc_depth: 3
+---
+
+Some of the insights i have worked on have ended up as blog posts and stand alone articles. Below are a highlight of some of them. Topics are broad as i have an interest in different topics. 
+<br><br>
+If there is a topic you are looking to gain insights on or collaborate on, feel free to reach out `r emo::ji("v")`.
+
+
+<h3 align="center">
+Conscious consumers: The future
+</h3>
+   
+
+As Environmental, Social and Governance (ESG) criteria begin to influence, in an increasing amount, investment decisions, how can millennials exploit the same ESG information to help them make more value-based purchasing decisions of consumer goods? Read more `r emo::ji("point_down")`
+
+
+<center>
+[![](images/ESG.PNG)](https://sustainabilityx.co/how-millennial-consumers-can-help-make-the-world-a-better-place-9e4b30ffde52)
+</center>
+
+<br><br>
+
+<h3 align="center">
+Digital regulations: A danger
+</h3>
+
+
+Efforts to increase digital regulations in **Tanzania** will negatively impact around 48% of the population who accessed roughly 93 Billion megabytes of internet data in the last quarter of 2020. Currently, just 1 in 4 people have access to internet services in Sub-Saharan Africa, the lowest of any region in the world. Read more `r emo::ji("point_down")`
+
+<center>
+[![](images/Digital.jpg)](https://www.linkedin.com/pulse/tanzania-does-need-more-digital-barriers-critique-plans-boshe/)
+</center>
+
+<br><br>
