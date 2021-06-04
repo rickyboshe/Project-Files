@@ -48,6 +48,13 @@ Sys.setenv("plotly_api_key"="RrlUUhrCU8EIF2f840Eb")
 This project primarily analyzes the fisheries management dataset from the [National Oceanic and Atmostpheric Administration (NOAA)](https://www.fishwatch.gov/resources). Accessing the latest data using their **FishWatch API**.
 
 
+
+<iframe title="" aria-label="Map" id="datawrapper-chart-aie5y" src="https://datawrapper.dwcdn.net/aie5y/3/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="455"></iframe>
+
+<script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(e){if(void 0!==e.data["datawrapper-height"]){var t=document.querySelectorAll("iframe");for(var a in e.data["datawrapper-height"])for(var r=0;r<t.length;r++){if(t[r].contentWindow===e.source)t[r].style.height=e.data["datawrapper-height"][a]+"px"}}}))}();
+</script>
+
+
 If you are not familiar with pulling data using APIs, this project might be helpful as this was also my first attempt utilizing an API. 
 
 #### **Accessing the data**
@@ -86,7 +93,7 @@ var_name<-var_name%>%
 
 We have reduced it to the essential variables we shall use to evaluate some of the seafood being monitored by NOAA. 
 
-Using REGEX function to parse througfh the coloumns to remove html tags and make the data easier to sort through. This is the major first step to cleaning the dataset. 
+Using REGEX function to parse through the columns to remove html tags and make the data easier to sort through. This is the major first step to cleaning the dataset. 
 ```{r clean, include=TRUE, warning=FALSE, message=FALSE}
 #The data contains html tags throughout the columns. Clean them out
 cleanFun <- function(htmlString) {
