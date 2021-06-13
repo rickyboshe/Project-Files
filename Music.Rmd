@@ -29,6 +29,13 @@ library(lubridate)
 library(ggcorrplot)
 ```
 
+
+```{r sys, include=FALSE}
+
+Sys.setenv("plotly_username"="rickymarvel")
+Sys.setenv("plotly_api_key"="RrlUUhrCU8EIF2f840Eb")
+
+```
 After downloading the database, load it/create a connection within an R markdown chunk. You can declare the connection within the setup chunk and you wont need to constantly declare it in every subsequent chunk. 
 ```{r database, include=TRUE}
 conn<-dbConnect(SQLite(), "chinook.db")
@@ -89,6 +96,13 @@ plot1<-genres_prop%>%
         axis.title.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
         legend.position="none")
 plot1
+
+```
+
+
+```{r include=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
+plot1<-ggplotly(plot1)
+api_create(plot1, filename = "Most selling genres in the USA")
 
 ```
 Out of the four artists, it would be wise to select the artists producing **Punk**, **Blues** and **Pop** as they are the three best performing genres out of the four artists, in the USA.
